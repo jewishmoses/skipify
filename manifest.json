@@ -1,0 +1,25 @@
+{
+    "manifest_version": 2,
+    "name": "Skipify",
+    "version": "1.0",
+    "description": "Sratim.tv skipper, skips the 30 seconds wait!",
+    "icons": {
+        "48": "./logo.png"
+    },
+    "permissions": [
+        "*://*.sratim.tv/*",
+        "cookies",
+        "webRequest"
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+                "*://*.sratim.tv/*"
+            ],
+            "js": [
+                "generator.js",
+                "skipify.js"
+            ]
+        }
+    ]
+}
