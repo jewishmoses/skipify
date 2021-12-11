@@ -9,7 +9,7 @@ async function playMovie() {
 
     window.wrappedJSObject.jQuery('body').off('click', '#playMovie');
 
-    let { cookie, token } = skipify_data.shift();
+    let { cookie, token, created_at } = skipify_data.shift();
 
     window.localStorage.setItem('skipify_data', JSON.stringify(skipify_data));
 
@@ -20,6 +20,17 @@ async function playMovie() {
     document.cookie = `Sratim=${cookie}; path=/; domain=.sratim.tv; secure`;
 
     window.wrappedJSObject.getMovieStreamLink(movieId, token);
+
+    skipify_data = window.localStorage.getItem('skipify_data');
+    skipify_data = JSON.parse(skipify_data);
+
+    if (skipify_data.length == 0) {
+        window.localStorage.setItem('skipify_first_generated_at', created_at)
+        return;
+    }
+
+    let data = skipify_data.shift();
+    window.localStorage.setItem('skipify_first_generated_at', data.created_at)
 
 }
 

@@ -22,9 +22,7 @@ async function getTokenWithCookie() {
     let token = await response.text();
     let cookie = getCookie('Sratim');
 
-    console.log({ token, cookie })
-
-    return { token, cookie };
+    return { token, cookie, created_at: Date.now(), };
 }
 
 
@@ -35,11 +33,11 @@ async function generate() {
     let skipify_data = window.localStorage.getItem('skipify_data');
     skipify_data = JSON.parse(skipify_data);
 
-    let skipify_last_generated_at = window.localStorage.getItem('skipify_last_generated_at');
+    let skipify_first_generated_at = window.localStorage.getItem('skipify_first_generated_at');
 
     let oneHour = 1000 * 60 * 30;
 
-    if (((new Date) - skipify_last_generated_at) > oneHour) {
+    if (((new Date) - skipify_first_generated_at) > oneHour) {
 
         skipify_data = [];
 
@@ -58,16 +56,14 @@ async function generate() {
 
     window.localStorage.setItem('skipify_data', JSON.stringify(skipify_data));
 
-    window.localStorage.setItem('skipify_last_generated_at', Date.now());
-
     generate();
 
 }
 
-let skipify_last_generated_at = window.localStorage.getItem('skipify_last_generated_at');
+let skipify_first_generated_at = window.localStorage.getItem('skipify_first_generated_at');
 
-if (skipify_last_generated_at == null) {
-    window.localStorage.setItem('skipify_last_generated_at', Date.now());
+if (skipify_first_generated_at == null) {
+    window.localStorage.setItem('skipify_first_generated_at', Date.now());
 }
 
 let skipify_data = window.localStorage.getItem('skipify_data');
