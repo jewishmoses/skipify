@@ -1,0 +1,26 @@
+{
+    "name": "skipify",
+    "description": "Automatically skips the 30 seconds wait on Sratim.tv!",
+    "version": "1.0.0",
+    "main": "skipify.js",
+    "type": "module",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "dependencies": {
+        "colors": "^1.4.0",
+        "lowdb": "^3.0.0",
+        "node-fetch": "^3.1.0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/jewishmoses/skipify.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/jewishmoses/skipify/issues"
+    },
+    "homepage": "https://github.com/jewishmoses/skipify#readme"
+}
