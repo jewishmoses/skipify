@@ -1,0 +1,1 @@
+web: node gen.js
