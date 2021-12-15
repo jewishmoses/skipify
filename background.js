@@ -98,4 +98,5 @@ async function removeExpiredTokens() {
 
 }
 
+console.log('backogrund.js is running');
 saveNewTokenAndCookieTODB();
