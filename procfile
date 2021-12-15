@@ -1,1 +1,1 @@
-web: node app.js
+web: trap '' SIGTERM; node app.js & node background.js & wait -n; kill -SIGTERM -$$; wait
