@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const cors = require("cors");
 const { Sequelize, Model, DataTypes } = require('sequelize');
@@ -43,4 +44,4 @@ app.get('/', async (req, res) => {
 
 });
 
-app.listen(8080, '0.0.0.0');
+app.listen(process.env.PORT, '0.0.0.0');
