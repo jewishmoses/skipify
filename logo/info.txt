@@ -1,0 +1,11 @@
+font name: OverpassMono-Light
+font link: https://fonts.google.com/specimen/Overpass+Mono
+font author: Delve Withrington
+font author site: https://www.delvefonts.com/
+
+
+icon designer: Gregor Cresnar
+icon designer link: /grega.cresnar
+        
+{"bg":"#E2D8C8","icon":"#666057","font":"#666057","slogan":"#7a746b"}
+      
