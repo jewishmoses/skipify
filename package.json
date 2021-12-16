@@ -1,6 +1,6 @@
 {
     "name": "skipify",
-    "description": "Automatically skips the 30 seconds wait on Sratim.tv!",
+    "description": "Automatically skips the 30 seconds wait on Sratim.TV!",
     "version": "1.0.0",
     "main": "skipify.js",
     "scripts": {
