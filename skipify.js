@@ -1,47 +1,61 @@
-async function playMovie() {
+async function getData() {
 
-    let skipify_data = window.localStorage.getItem('skipify_data');
-    skipify_data = JSON.parse(skipify_data);
+    var requestOptions = {
+        method: 'GET',
+        redirect: 'follow'
+    };
 
-    if (skipify_data.length == 0) {
-        return;
+    let response;
+
+    try {
+
+        response = await fetch("https://sratim-tv.herokuapp.com/", requestOptions)
+        response = await response.json();
+
+    }
+    catch (error) {
+
+        return { status: false };
+
     }
 
-    window.wrappedJSObject.jQuery('body').off('click', '#playMovie');
+    if (response.stauts == 'failed') {
 
-    let { cookie, token, created_at } = skipify_data.shift();
+        return { status: false };
 
-    window.localStorage.setItem('skipify_data', JSON.stringify(skipify_data));
+    }
+
+    return response;
+
+}
+
+async function main() {
+
+    document.getElementById('playMovie').disabled = true;
+
+    let { cookie, token, status } = await getData();
+
+    if (status == false) {
+
+        document.getElementById('playMovie').disabled = false;
+        return;
+
+    }
 
     window.wrappedJSObject.jQuery('.action-buttons').hide();
     window.wrappedJSObject.jQuery('.player-section').show();
     window.wrappedJSObject.jQuery('.player-section .err').remove();
 
-    document.cookie = `Sratim=${cookie}; path=/; domain=.sratim.tv; secure`;
+    document.cookie = cookie;
 
     window.wrappedJSObject.getMovieStreamLink(movieId, token);
 
-    skipify_data = window.localStorage.getItem('skipify_data');
-    skipify_data = JSON.parse(skipify_data);
-
-    if (skipify_data.length == 0) {
-        window.localStorage.setItem('skipify_first_generated_at', created_at)
-        return;
-    }
-
-    let data = skipify_data.shift();
-    window.localStorage.setItem('skipify_first_generated_at', data.created_at)
-
 }
 
-player_skipify_data = window.localStorage.getItem('skipify_data');
-
-if (player_skipify_data == null) {
-    window.localStorage.setItem('skipify_data', JSON.stringify([]));
-}
+const movieId = window.wrappedJSObject.movieID;
 
 if (movieId !== undefined) {
 
-    playMovie();
+    main();
 
 }
