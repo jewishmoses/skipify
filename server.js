@@ -6,7 +6,8 @@ const { Sequelize, Model, DataTypes } = require('sequelize');
 
 const sequelizeOptions = {
     dialect: 'sqlite',
-    storage: './database.sqlite'
+    storage: './database.sqlite',
+    logging: false,
 };
 
 const sequelize = new Sequelize(sequelizeOptions);
@@ -38,7 +39,19 @@ async function saveNewTokenAndCookieTODB() {
         headers,
     };
 
-    const response = await axios(requestOptions)
+    let response;
+
+    try
+    {
+        response = await axios(requestOptions);
+    }
+    catch (error)
+    {
+        console.log(error);
+        await removeExpiredTokens();
+        return;
+    }
+
     const token = response.data;
     const cookie = response.headers['set-cookie'][0];
     const isInvalid = cookie == null ? true : false;
