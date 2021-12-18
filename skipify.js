@@ -42,19 +42,17 @@ async function main() {
 
     }
 
-    window.wrappedJSObject.jQuery('.action-buttons').hide();
-    window.wrappedJSObject.jQuery('.player-section').show();
-    window.wrappedJSObject.jQuery('.player-section .err').remove();
+    window.jQuery('.action-buttons').hide();
+    window.jQuery('.player-section').show();
+    window.jQuery('.player-section .err').remove();
 
     document.cookie = cookie;
 
-    window.wrappedJSObject.getMovieStreamLink(movieId, token);
+    window.getMovieStreamLink(window.movieID, token);
 
 }
 
-const movieId = window.wrappedJSObject.movieID;
-
-if (movieId !== undefined) {
+if (window.movieID !== undefined) {
 
     main();
 
