@@ -15,13 +15,7 @@ async function getData() {
     }
     catch (error) {
 
-        return { status: false };
-
-    }
-
-    if (response.stauts == 'failed') {
-
-        return { status: false };
+        return { status: 'failed' };
 
     }
 
@@ -35,7 +29,7 @@ async function main() {
 
     let { cookie, token, status } = await getData();
 
-    if (status == false) {
+    if (status == 'failed') {
 
         document.getElementById('playMovie').disabled = false;
         return;
