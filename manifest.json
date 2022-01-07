@@ -9,9 +9,7 @@
     },
     "permissions": [
         "*://*.sratim.tv/*",
-        "*://sratim-tv.herokuapp.com/*",
-        "cookies",
-        "webRequest"
+        "*://sratim-tv.herokuapp.com/*"
     ],
     "homepage_url": "https://github.com/jewishmoses/skipify",
     "content_scripts": [
