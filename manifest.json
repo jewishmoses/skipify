@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "Skipify",
-    "version": "1.3",
+    "version": "1.4",
     "description": "Skips the 30 seconds on Sratim.TV!",
     "icons": {
         "48": "./logo/48.png",
