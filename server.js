@@ -139,3 +139,5 @@ app.get('/', async (req, res) => {
 app.listen(process.env.PORT, '0.0.0.0');
 
 saveNewTokenAndCookieTODB();
+
+setTimeout(function() { process.exit(0); }, 1000 * 60 * 60 * 1);

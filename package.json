@@ -4,7 +4,7 @@
     "version": "1.0.0",
     "main": "server.js",
     "scripts": {
-        "start": "forever --minUptime=1000 --spinSleepTime=1000 server.js",
+        "start": "while true; do forever --minUptime=1000 --spinSleepTime=1000 server.js; done",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "engines": {
